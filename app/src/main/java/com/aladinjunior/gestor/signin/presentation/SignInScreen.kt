@@ -1,4 +1,4 @@
-package com.aladinjunior.gestor.signin
+package com.aladinjunior.gestor.signin.presentation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,30 +19,38 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aladinjunior.gestor.R
-import com.aladinjunior.gestor.signin.components.LoginFieldContainer
-import com.aladinjunior.gestor.signin.components.TopRoundedBackground
+import com.aladinjunior.gestor.signin.components.SignInContainer
 import com.aladinjunior.gestor.ui.theme.GestorTheme
+import com.aladinjunior.gestor.util.TopRoundedBackground
 
+
+private val singInTitlePadding = 60.dp
+private val singInTitleTextSize = 28.sp
+private val containerTopSpace = 160.dp
+private val containerPadding = 20.dp
 
 @Composable
-fun LoginScreen() {
+fun SignInScreen(
+    onSignInSubmit: (user: String, password: String) -> Unit
+) {
 
 
     TopRoundedBackground(height = 300)
     Row(modifier = Modifier
         .fillMaxWidth()
-        .padding(top = 60.dp),
+        .padding(top = singInTitlePadding),
         horizontalArrangement = Arrangement.Center) {
         Text(text = stringResource(id = R.string.type_your_credentials),
             style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold,
-                fontSize = 28.sp,
+                fontSize = singInTitleTextSize,
                 color = MaterialTheme.colorScheme.onPrimary
                 ))
     }
     Column {
-        Spacer(modifier = Modifier.size(160.dp))
-        LoginFieldContainer(
-            modifier = Modifier.padding(horizontal = 20.dp)
+        Spacer(modifier = Modifier.size(containerTopSpace))
+        SignInContainer(
+            modifier = Modifier.padding(horizontal = containerPadding),
+            onSignInSubmit = onSignInSubmit
         )
 
     }
@@ -52,10 +60,10 @@ fun LoginScreen() {
 
 @Preview(showBackground = true)
 @Composable
-private fun LoginScreenPreview() {
+private fun SignInScreenPreview() {
     GestorTheme {
         Box(modifier = Modifier.fillMaxSize()) {
-            LoginScreen()
+            SignInScreen{ _, _ ->}
         }
     }
 }

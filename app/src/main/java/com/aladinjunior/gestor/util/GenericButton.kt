@@ -12,14 +12,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.aladinjunior.gestor.ui.theme.GestorTheme
 
 @Composable
-fun LoginButton(
-    buttonText: String
+fun GenericButton(
+    buttonText: String,
+    onClick: () -> Unit
 ) {
     Button(
         modifier = Modifier.fillMaxWidth(
 
         ),
-        onClick = { /*TODO*/ },
+        onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary
         )
@@ -37,6 +38,6 @@ fun LoginButton(
 @Composable
 private fun LoginButtonPreview() {
     GestorTheme {
-        LoginButton("Login")
+        GenericButton("Login", onClick = {})
     }
 }

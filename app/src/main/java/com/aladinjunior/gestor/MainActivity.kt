@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.aladinjunior.gestor.signin.LoginScreen
+import com.aladinjunior.gestor.signin.presentation.SignInScreen
 import com.aladinjunior.gestor.ui.theme.GestorTheme
 
 class MainActivity : ComponentActivity() {
@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             GestorTheme {
                 // A surface container using the 'background' color from the theme
-                LoginScreen()
+                GestorNavHost()
             }
         }
     }

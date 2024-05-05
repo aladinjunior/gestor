@@ -16,13 +16,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import com.aladinjunior.gestor.signin.PasswordState
+import com.aladinjunior.gestor.signin.UserState
 import com.aladinjunior.gestor.ui.theme.GestorTheme
+import com.aladinjunior.gestor.util.TextFieldState
 
 @Composable
-fun LoginTextField(
+fun SignInTextField(
     modifier: Modifier = Modifier,
     fieldLabelText: String,
-    isPasswordField: Boolean = false
+    isPasswordField: Boolean = false,
+    state: TextFieldState = if (!isPasswordField) remember {UserState()} else remember {PasswordState()}
+
+
 ) {
 
     var currentFieldValue by remember { mutableStateOf("") }
@@ -37,8 +43,9 @@ fun LoginTextField(
         )
         TextField(
             modifier = Modifier.fillMaxWidth(),
-            value = currentFieldValue, onValueChange = {
-                currentFieldValue = it
+            value = state.text,
+            onValueChange = {
+                state.text = it
             },
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color.Transparent,
@@ -58,6 +65,6 @@ fun LoginTextField(
 @Composable
 private fun LoginTextFieldPreview() {
     GestorTheme {
-        LoginTextField(fieldLabelText = "Usuário", isPasswordField = true)
+        SignInTextField(fieldLabelText = "Usuário", isPasswordField = true)
     }
 }
