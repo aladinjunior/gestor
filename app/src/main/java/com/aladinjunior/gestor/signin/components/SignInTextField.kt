@@ -31,8 +31,6 @@ fun SignInTextField(
 
 ) {
 
-    var currentFieldValue by remember { mutableStateOf("") }
-
 
     Column(modifier) {
         Text(
