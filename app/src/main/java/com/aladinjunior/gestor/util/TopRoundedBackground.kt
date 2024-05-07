@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun TopRoundedBackground(
-    height: Int
+    height: Int,
 ) {
     Box(
         modifier = Modifier
@@ -20,7 +20,7 @@ fun TopRoundedBackground(
             .fillMaxWidth()
             .background(
                 color = MaterialTheme.colorScheme.primary,
-                shape = RoundedCornerShape(bottomEnd = 8.dp, bottomStart = 8.dp)
+                shape = RoundedCornerShape(bottomEnd = 24.dp, bottomStart = 24.dp)
             )
     )
 }

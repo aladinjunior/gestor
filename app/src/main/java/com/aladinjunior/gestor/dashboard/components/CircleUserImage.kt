@@ -17,7 +17,7 @@ import com.aladinjunior.gestor.R
 import com.aladinjunior.gestor.ui.theme.GestorTheme
 
 
-private val borderWidth = 2.dp
+private val borderWidth = 3.dp
 private val imageSize = 80.dp
 
 @Composable

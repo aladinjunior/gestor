@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.aladinjunior.gestor.Destinations.DASHBOARD_ROUTE
 import com.aladinjunior.gestor.Destinations.SIGN_IN_ROUTE
+import com.aladinjunior.gestor.dashboard.DashboardRoute
 import com.aladinjunior.gestor.dashboard.DashboardScreen
 import com.aladinjunior.gestor.signin.presentation.SignInRoute
 import com.aladinjunior.gestor.signin.presentation.SignInScreen
@@ -32,7 +33,7 @@ fun GestorNavHost(
             )
         }
         composable(DASHBOARD_ROUTE) {
-            DashboardScreen()
+            DashboardRoute()
         }
     }
 
