@@ -1,6 +1,6 @@
 package com.aladinjunior.gestor.signin.model
 
-data class User(
+data class UserAccount(
     val user: String,
     val password: String,
 )

@@ -2,11 +2,12 @@ package com.aladinjunior.gestor.signin.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.aladinjunior.gestor.signin.model.User
+import com.aladinjunior.gestor.commom.User
+import com.aladinjunior.gestor.signin.model.UserAccount
 
 @Composable
 fun SignInRoute(
-    onSignInComplete: () -> Unit,
+    onSignInComplete: (loggedInUserId: Int) -> Unit,
     onSignInFailure: () -> Unit,
 ) {
 
@@ -14,7 +15,7 @@ fun SignInRoute(
     SignInScreen(
         onSignInSubmit = { user, password ->
             signInViewModel.signIn(
-                User(user, password),
+                UserAccount(user, password),
                 onSignInComplete,
                 onSignInFailure
             )
