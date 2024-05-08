@@ -19,7 +19,6 @@ class FakeUserRepository(
 
         if (fakeLocalDataSource.existentUserAccounts.contains(userAccountSubmitted)) {
 
-            Log.d("testando123321", "signInRepository: ${userAccountSubmitted.hashCode()}")
             val loggedInUser = fakeLocalDataSource.accounts[userAccountSubmitted.hashCode()]!!
             _user = UserState.LoggedInUser(loggedInUser.id)
         }

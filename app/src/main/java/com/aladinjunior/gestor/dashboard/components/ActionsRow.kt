@@ -1,10 +1,14 @@
 package com.aladinjunior.gestor.dashboard.components
 
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.HorizontalDivider
@@ -12,6 +16,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,6 +35,7 @@ fun ActionsRow(
     onItemClick: (itemClicked: String) -> Unit,
 ) {
 
+    val interactionSource = remember { MutableInteractionSource() }
 
     Column(
         modifier = modifier,
@@ -37,12 +43,18 @@ fun ActionsRow(
     ) {
         actions.forEach { action ->
 
-            Row {
-
-                Text(
-                    modifier = Modifier.clickable {
+            Row(
+                modifier = Modifier
+                    .clickable(
+                        indication = null,
+                        interactionSource = interactionSource
+                    ) {
                         onItemClick(action)
-                    },
+                    }
+
+
+            ) {
+                Text(
                     text = action,
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
