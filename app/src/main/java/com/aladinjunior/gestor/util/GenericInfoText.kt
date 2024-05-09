@@ -22,6 +22,7 @@ fun GenericInfoText(
     textColor: Color = Color.Black
 ) {
     Text(
+        modifier = modifier,
         text = text,
         style = MaterialTheme.typography.titleLarge.
         copy(fontSize = textSize, fontWeight = fontWeight, color = textColor)

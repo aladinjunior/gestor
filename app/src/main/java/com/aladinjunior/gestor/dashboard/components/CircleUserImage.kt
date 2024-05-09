@@ -24,7 +24,6 @@ private val imageSize = 80.dp
 fun CircleUserImage(
     @DrawableRes userImage: Int
 ) {
-
     Image(painter = painterResource(id = userImage), contentDescription = "userCircleImage",
         modifier = Modifier.size(imageSize).clip(CircleShape).border(borderWidth, MaterialTheme.colorScheme.primary, CircleShape),
         contentScale = ContentScale.Crop

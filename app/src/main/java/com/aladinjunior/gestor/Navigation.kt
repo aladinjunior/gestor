@@ -40,7 +40,6 @@ fun GestorNavHost(
             }
         )) {
             val userId = it.arguments?.getInt("userId")
-            Log.d("testando123321", "GestorNavHost: $userId")
             val loggedInUser = FakeLocalDataSource.accounts[userId] ?: FakeLocalDataSource.user {
                 name = "usuario vazio"
             }

@@ -8,7 +8,7 @@ object FakeLocalDataSource {
 
 
     //user builder
-    fun user(block: User.Builder.() -> Unit): User = User.Builder().apply(block).build()
+    private fun user(block: User.Builder.() -> Unit): User = User.Builder().apply(block).build()
 
 
     private const val USER_A_USERNAME = "aladin"
