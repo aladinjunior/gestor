@@ -2,13 +2,14 @@ package com.aladinjunior.gestor.signin.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.aladinjunior.gestor.signin.data.FakeUserRepository
-import com.aladinjunior.gestor.signin.data.UserState
+import com.aladinjunior.gestor.signin.data.repository.FakeUserRepository
 import com.aladinjunior.gestor.signin.data.local.FakeLocalDataSource
+import com.aladinjunior.gestor.signin.data.repository.UserRepository
+import com.aladinjunior.gestor.signin.data.repository.UserState
 import com.aladinjunior.gestor.signin.model.UserAccount
 
 class SignInViewModel(
-    private val fakeUserRepository: FakeUserRepository
+    private val userRepository: UserRepository
 ) : ViewModel() {
 
 
@@ -17,9 +18,9 @@ class SignInViewModel(
         onSignInComplete: (loggedInUserId: Int) -> Unit,
         onSignInFailure: () -> Unit,
     ) {
-        fakeUserRepository.signIn(userAccountSubmitted)
+        userRepository.signIn(userAccountSubmitted)
 
-        when (val userState = fakeUserRepository.user) {
+        when (val userState = userRepository.user) {
             is UserState.LoggedInUser -> onSignInComplete(userState.loggedInUserId)
             is UserState.NoUserLoggedIn -> onSignInFailure()
         }

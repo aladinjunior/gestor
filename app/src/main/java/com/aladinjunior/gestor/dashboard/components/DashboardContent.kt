@@ -16,13 +16,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aladinjunior.gestor.R
-import com.aladinjunior.gestor.dashboard.Actions
 import com.aladinjunior.gestor.ui.theme.GestorTheme
 import com.aladinjunior.gestor.util.GenericInfoText
 
@@ -45,6 +43,7 @@ fun DashboardContent(
     userName: String,
     address: String,
     companyName: String,
+    actionClicked: (action: String) -> Unit
 
 ) {
 
@@ -71,9 +70,7 @@ fun DashboardContent(
                 Spacer(modifier = Modifier.size(verticalDividerSpace))
                 HorizontalDivider(modifier = Modifier.padding(horizontal = dividerPadding))
                 Spacer(modifier = Modifier.size(verticalDividerSpace))
-                ActionsRow(actions = Actions.actions, modifier = Modifier.padding(horizontal = dividerPadding)) {
-
-                }
+                ActionsRow(modifier = Modifier.padding(horizontal = dividerPadding), actionClicked = actionClicked)
 
 
 
@@ -101,7 +98,7 @@ private fun DashboardContentPreview() {
         Box(modifier = Modifier.fillMaxSize()) {
 
             DashboardContent(userImage = R.drawable.ic_launcher_foreground,
-                userName = "LOREM", address = "Brazil", companyName = "IPSUM")
+                userName = "LOREM", address = "Brazil", companyName = "IPSUM", actionClicked = {})
         }
     }
 }

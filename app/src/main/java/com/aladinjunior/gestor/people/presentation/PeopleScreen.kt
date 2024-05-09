@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,12 +27,20 @@ private val peopleContentPadding = 24.dp
 
 
 @Composable
-fun PeopleScreen() {
+fun PeopleScreen(
+    searchText: String,
+    onSearchTextChange: (text: String) -> Unit
+) {
     Column {
         GenericTopAppBar(modifier = Modifier.padding(vertical = screenComponentsPadding),onBackPressed = { /*TODO*/ }, currentScreenTitle = "Pessoas")
-        GestorSearchBar(hint = "Nome", modifier = Modifier
+        GestorSearchBar(
+            modifier = Modifier
             .fillMaxWidth()
-            .padding(screenComponentsPadding))
+            .padding(screenComponentsPadding),
+            hint = "Nome",
+            searchText = searchText,
+            onSearchTextChange = onSearchTextChange
+            )
         Spacer(modifier = Modifier.size(20.dp))
 
         GenericInfoText(text = "Pessoas", textSize = 18.sp, modifier = Modifier.padding(start = peopleContentPadding), textColor = MaterialTheme.colorScheme.secondary)
@@ -51,7 +60,7 @@ private fun PeopleScreenPreview() {
 
     GestorTheme {
         Box(modifier = Modifier.fillMaxSize()) {
-            PeopleScreen()
+            PeopleScreen("") {}
         }
     }
 }
@@ -62,7 +71,7 @@ private fun PeopleScreenPreviewDark() {
 
     GestorTheme {
         Box(modifier = Modifier.fillMaxSize()) {
-            PeopleScreen()
+            PeopleScreen("") {}
         }
     }
 }

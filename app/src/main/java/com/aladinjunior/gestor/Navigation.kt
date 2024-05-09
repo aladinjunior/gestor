@@ -1,6 +1,5 @@
 package com.aladinjunior.gestor
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -9,14 +8,18 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.aladinjunior.gestor.Destinations.DASHBOARD_ROUTE
+import com.aladinjunior.gestor.Destinations.PEOPLE_ROUTE
 import com.aladinjunior.gestor.Destinations.SIGN_IN_ROUTE
+import com.aladinjunior.gestor.dashboard.Actions.PEOPLE
 import com.aladinjunior.gestor.dashboard.DashboardRoute
+import com.aladinjunior.gestor.people.PeopleRoute
 import com.aladinjunior.gestor.signin.data.local.FakeLocalDataSource
 import com.aladinjunior.gestor.signin.presentation.SignInRoute
 
 object Destinations {
     const val SIGN_IN_ROUTE = "signin"
     const val DASHBOARD_ROUTE = "dashboard/{userId}"
+    const val PEOPLE_ROUTE = "people"
 }
 
 @Composable
@@ -41,9 +44,19 @@ fun GestorNavHost(
         )) {
             val userId = it.arguments?.getInt("userId")
             val loggedInUser = FakeLocalDataSource.accounts[userId] ?: FakeLocalDataSource.user {
-                name = "usuario vazio"
+                name = "empty user"
             }
-            DashboardRoute(loggedInUser)
+            DashboardRoute(
+                loggedInUser = loggedInUser,
+                onActionClicked = { action ->
+                    when (action){
+                        PEOPLE -> navController.navigate(PEOPLE_ROUTE)
+                    }
+
+                })
+        }
+        composable(PEOPLE_ROUTE) {
+            PeopleRoute()
         }
     }
 

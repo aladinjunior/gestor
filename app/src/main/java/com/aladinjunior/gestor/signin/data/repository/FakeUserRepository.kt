@@ -1,21 +1,21 @@
-package com.aladinjunior.gestor.signin.data
+package com.aladinjunior.gestor.signin.data.repository
+
 import android.util.Log
 import com.aladinjunior.gestor.signin.data.local.FakeLocalDataSource
+import com.aladinjunior.gestor.signin.data.repository.UserRepository
+import com.aladinjunior.gestor.signin.data.repository.UserState
 import com.aladinjunior.gestor.signin.model.UserAccount
 
-sealed class UserState {
-    data class LoggedInUser(val loggedInUserId: Int) : UserState()
-    data object NoUserLoggedIn : UserState()
-}
 
 class FakeUserRepository(
     private val fakeLocalDataSource: FakeLocalDataSource
-) {
+) : UserRepository {
+
 
     private var _user: UserState = UserState.NoUserLoggedIn
-    val user: UserState get() = _user
+    override val user: UserState get() = _user
 
-    fun signIn(userAccountSubmitted: UserAccount) {
+    override fun signIn(userAccountSubmitted: UserAccount) {
 
         if (fakeLocalDataSource.existentUserAccounts.contains(userAccountSubmitted)) {
 
@@ -25,7 +25,6 @@ class FakeUserRepository(
 
 
     }
-
 
 
 }

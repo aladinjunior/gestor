@@ -8,14 +8,15 @@ import com.aladinjunior.gestor.commom.User
 
 @Composable
 fun DashboardRoute(
+    onActionClicked: (action: String) -> Unit,
     loggedInUser: User
 ) {
-
     DashboardScreen(
         userImage = loggedInUser.image,
         userName = loggedInUser.name,
         address = loggedInUser.address,
-        companyName = loggedInUser.company
+        companyName = loggedInUser.company,
+        actionClicked = onActionClicked
     )
 }
 

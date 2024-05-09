@@ -1,5 +1,14 @@
 package com.aladinjunior.gestor.dashboard
 
 object Actions {
-    val actions = listOf("Pessoas", "Abastecimentos", "Vendas", "Configurações", "Feedback")
+
+
+    const val PEOPLE = "Pessoas"
+    const val SUPPLIES = "Abastecimentos"
+    const val SALES = "Vendas"
+    const val SETTINGS = "Configurações"
+    const val FEEDBACK = "Feedback"
+
+
+    val actions = listOf(PEOPLE, SUPPLIES, SALES, SETTINGS, FEEDBACK)
 }

@@ -1,14 +1,11 @@
 package com.aladinjunior.gestor.dashboard.components
 
-import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.HorizontalDivider
@@ -20,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.aladinjunior.gestor.dashboard.Actions
 import com.aladinjunior.gestor.ui.theme.GestorTheme
 
 
@@ -31,8 +29,8 @@ private val actions: List<String> = List(5) {
 @Composable
 fun ActionsRow(
     modifier: Modifier = Modifier,
-    actions: List<String>,
-    onItemClick: (itemClicked: String) -> Unit,
+    actions: List<String> = Actions.actions,
+    actionClicked: (itemClicked: String) -> Unit,
 ) {
 
     val interactionSource = remember { MutableInteractionSource() }
@@ -49,7 +47,7 @@ fun ActionsRow(
                         indication = null,
                         interactionSource = interactionSource
                     ) {
-                        onItemClick(action)
+                        actionClicked(action)
                     }
 
 

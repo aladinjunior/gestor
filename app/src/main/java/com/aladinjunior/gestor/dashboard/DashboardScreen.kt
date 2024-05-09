@@ -21,6 +21,7 @@ fun DashboardScreen(
     userName: String,
     address: String,
     companyName: String,
+    actionClicked: (action: String) -> Unit
 
 ) {
     TopRoundedBackground(height = 250)
@@ -31,7 +32,8 @@ fun DashboardScreen(
             userName = userName,
             address = address,
             companyName = companyName,
-            modifier = Modifier.padding(horizontal = 30.dp)
+            modifier = Modifier.padding(horizontal = 30.dp),
+            actionClicked = actionClicked
         )
     }
 
