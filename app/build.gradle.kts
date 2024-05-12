@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("plugin.serialization") version "1.9.0"
+
 }
 
 android {
@@ -21,7 +23,15 @@ android {
     }
 
     buildTypes {
+
+
+
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://handy-mutually-ladybird.ngrok-free.app\"")
+        }
+
         release {
+            buildConfigField("String", "BASE_URL", "\"https://handy-mutually-ladybird.ngrok-free.app\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -38,6 +48,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -61,6 +72,16 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation (libs.androidx.core.splashscreen)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.okhttp)
+    implementation(libs.androidx.tracing.ktx)
+    implementation(libs.gson.converter)
+    implementation(libs.kotlinx.serialization.json)
+
+
+
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

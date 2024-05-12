@@ -30,8 +30,10 @@ fun GestorSearchBar(
     modifier: Modifier = Modifier,
     hint: String,
     searchText: String,
-    onSearchTextChange: (text: String) -> Unit
+    onSearchTextChange: (text: String) -> Unit,
+
 ) {
+
 
     SearchBar(
         query = searchText,
@@ -63,8 +65,10 @@ private fun GestorSearchBarPreview() {
                     .fillMaxWidth()
                     .padding(18.dp),
                 hint = "Pessoa",
-                ""
-            ) {}
+                "",
+
+                onSearchTextChange = {}
+            )
         }
     }
 }
