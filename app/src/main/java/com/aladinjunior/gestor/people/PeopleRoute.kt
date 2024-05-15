@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
-import com.aladinjunior.gestor.people.presentation.PeopleViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.aladinjunior.gestor.people.presentation.PeopleScreen
+import com.aladinjunior.gestor.people.presentation.PeopleViewModel
 
 @Composable
 fun PeopleRoute(
@@ -20,7 +20,6 @@ fun PeopleRoute(
         searchText,
         onSearchTextChange = viewModel::onSearchTextChange,
         people = people
-
     )
 
 

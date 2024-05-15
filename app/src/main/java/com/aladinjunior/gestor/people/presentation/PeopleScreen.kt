@@ -1,6 +1,5 @@
 package com.aladinjunior.gestor.people.presentation
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -42,7 +41,6 @@ fun PeopleScreen(
             hint = "Nome",
             searchText = searchText,
             onSearchTextChange = onSearchTextChange,
-
             )
         Spacer(modifier = Modifier.size(20.dp))
 

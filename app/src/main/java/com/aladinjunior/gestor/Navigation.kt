@@ -1,5 +1,7 @@
 package com.aladinjunior.gestor
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -26,7 +28,21 @@ object Destinations {
 fun GestorNavHost(
     navController: NavHostController = rememberNavController()
 ) {
-    NavHost(navController = navController, startDestination = SIGN_IN_ROUTE) {
+
+    NavHost(navController = navController,
+        startDestination = SIGN_IN_ROUTE,
+        enterTransition = {
+            slideIntoContainer(
+                AnimatedContentTransitionScope.SlideDirection.Left,
+                animationSpec = tween(300)
+            )
+        },
+        exitTransition = {
+            slideOutOfContainer(
+                AnimatedContentTransitionScope.SlideDirection.Right,
+                animationSpec = tween(300)
+            )
+        }) {
         composable(SIGN_IN_ROUTE) {
             SignInRoute(
                 onSignInComplete = {
@@ -36,12 +52,15 @@ fun GestorNavHost(
                 }
             )
         }
-        composable(DASHBOARD_ROUTE,
+        composable(
+            DASHBOARD_ROUTE,
             arguments = listOf(
-            navArgument("userId") {
-                type = NavType.IntType
-            }
-        )) {
+                navArgument("userId") {
+                    type = NavType.IntType
+                }
+            ),
+
+            ) {
             val userId = it.arguments?.getInt("userId")
             val loggedInUser = FakeLocalDataSource.accounts[userId] ?: FakeLocalDataSource.user {
                 name = "empty user"
@@ -49,16 +68,20 @@ fun GestorNavHost(
             DashboardRoute(
                 loggedInUser = loggedInUser,
                 onActionClicked = { action ->
-                    when (action){
+                    when (action) {
                         PEOPLE -> navController.navigate(PEOPLE_ROUTE)
                     }
 
                 })
         }
-        composable(PEOPLE_ROUTE) {
+        composable(
+            PEOPLE_ROUTE,
+
+        ) {
             PeopleRoute()
         }
     }
+
 
 }
 

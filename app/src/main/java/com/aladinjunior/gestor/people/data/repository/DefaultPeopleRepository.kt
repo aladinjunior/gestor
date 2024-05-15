@@ -1,8 +1,9 @@
 package com.aladinjunior.gestor.people.data.repository
 
-import android.util.Log
 import com.aladinjunior.gestor.network.GestorNetworkDataSource
 import com.aladinjunior.gestor.people.domain.model.Person
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 private const val TAG = "TAG"
 
@@ -12,13 +13,16 @@ class DefaultPeopleRepository(
     override val people: List<Person>
         get() = TODO("Not yet implemented")
 
-    override suspend fun getPeopleByFirstName(firstName: String): List<Person> {
+    override suspend fun getPeopleByFirstName(firstName: String): Flow<List<Person>> {
 
-        return try {
-            networkDataSource.getPeopleByFirstName(firstName)
-        } catch (e: Exception){
-            Log.d(TAG, "error: ${e.message}")
-            emptyList()
+
+        return flow {
+            try {
+                val people = networkDataSource.getPeopleByFirstName(firstName)
+                emit(people)
+            } catch (e: Exception) {
+              emit(emptyList())
+            }
         }
     }
 }
