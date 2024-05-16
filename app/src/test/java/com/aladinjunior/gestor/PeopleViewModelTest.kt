@@ -24,13 +24,11 @@ class PeopleViewModelTest {
 
     private lateinit var viewModel: PeopleViewModel
 
-
     @Before
     fun setup() {
         TestConfig.isTest = true
         viewModel = PeopleViewModel(repository)
     }
-
 
     @Test
     fun peopleNameIsReturned_withMatchingQuery() = runTest {
@@ -40,7 +38,6 @@ class PeopleViewModelTest {
         }
 
         viewModel.onSearchTextChange("person 1")
-
 
         advanceUntilIdle()
 

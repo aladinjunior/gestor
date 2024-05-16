@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aladinjunior.gestor.people.data.local.PeopleFakeLocalDataSource.fakePeople
+import com.aladinjunior.gestor.people.data.local.PeopleFakeLocalDataSource.fakePeople2
 import com.aladinjunior.gestor.people.domain.model.Person
 import com.aladinjunior.gestor.ui.theme.GestorTheme
 import com.aladinjunior.gestor.util.GenericInfoText
@@ -28,7 +29,7 @@ private val verticalSpaceArrangementSize = 9.dp
 @Composable
 fun PeopleContent(
     modifier: Modifier = Modifier,
-    people: List<Person> = fakePeople,
+    people: List<Person> = fakePeople2,
 
     ) {
 

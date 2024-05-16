@@ -19,7 +19,12 @@ object FakeLocalDataSource {
     private const val USER_B_PASSWORD = "240195"
     private val userAccountB = UserAccount(USER_B_USERNAME, USER_B_PASSWORD)
 
-    val existentUserAccounts = listOf(userAccountA, userAccountB)
+    private const val USER_C_USERNAME = "user"
+    private const val USER_C_PASSWORD = "12345"
+    private val userAccountC = UserAccount(USER_C_USERNAME, USER_C_PASSWORD)
+
+
+    val existentUserAccounts = listOf(userAccountA, userAccountB, userAccountC)
 
 
     val accounts: HashMap<Int, User> = hashMapOf(
@@ -36,6 +41,15 @@ object FakeLocalDataSource {
             name = "JURANDI"
             address = "Petrolina"
             company = "SOFTUNI"
+            image = R.drawable.ic_launcher_foreground
+
+        } ,
+
+        userAccountC.hashCode() to user {
+            id = userAccountC.hashCode()
+            name = "USER"
+            address = "Location"
+            company = "ENTERPRISE"
             image = R.drawable.ic_launcher_foreground
 
         }

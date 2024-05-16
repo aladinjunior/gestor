@@ -11,8 +11,39 @@ object PeopleFakeLocalDataSource {
 
     val fakePeople: List<Person> = List(21) { index -> person { name = "Person $index" } }
 
+    val fakePeople2 = listOf(
+        person {
+            name = "Aladin Junior"
+        },
+        person {
+            name = "Bento Smith"
+        },
+        person {
+            name = "Junior Jones"
+        },
+        person {
+            name = "Mark Zuckerberg"
+        },
+        person {
+            name = "Steve Jobs"
+        },
+        person {
+            name = "Steve Seagal"
+        },
+        person {
+            name = "Bill Gates"
+        },
+        person {
+            name = "Jeff Bezzos"
+        },
+        person {
+            name = "Jefferson Sean"
+        },
+
+
+    )
     fun getPeopleByFirstName(firstName: String) : List<Person> {
-        return fakePeople.filter {
+        return fakePeople2.filter {
             it.nome.contains(firstName, ignoreCase = true)
         }
     }

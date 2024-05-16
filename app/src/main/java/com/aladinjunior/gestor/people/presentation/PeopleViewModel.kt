@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.aladinjunior.gestor.TestConfig
 import com.aladinjunior.gestor.network.RetrofitGestorNetwork
 import com.aladinjunior.gestor.people.data.local.PeopleFakeLocalDataSource
-import com.aladinjunior.gestor.people.data.local.PeopleFakeLocalDataSource.fakePeople
 import com.aladinjunior.gestor.people.data.repository.DefaultPeopleRepository
 import com.aladinjunior.gestor.people.data.repository.FakePeopleRepository
 import com.aladinjunior.gestor.people.data.repository.PeopleRepository
@@ -27,14 +26,12 @@ class PeopleViewModel(
     private val peopleRepository: PeopleRepository,
 ) : ViewModel() {
 
-
     private val _searchText = MutableStateFlow("")
     val searchText = _searchText.asStateFlow()
 
     fun onSearchTextChange(text: String) {
         _searchText.value = text
     }
-
 
     private val _people = MutableStateFlow(listOf<Person>())
     val people = searchText
@@ -51,20 +48,17 @@ class PeopleViewModel(
             _people.value
         )
 
-
     init {
         viewModelScope.launch {
-            _people.value = fakePeople
+            _people.value = emptyList()
         }
     }
-
-
 
     class PeopleViewModelFactory : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(PeopleViewModel::class.java)) {
-                return if (TestConfig.isTest) {
+                return if (!TestConfig.isTest) {
                     PeopleViewModel(FakePeopleRepository(PeopleFakeLocalDataSource)) as T
 
                 } else {
