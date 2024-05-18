@@ -4,8 +4,9 @@ import com.aladinjunior.gestor.people.data.local.PeopleFakeLocalDataSource
 import com.aladinjunior.gestor.people.domain.model.Person
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
+import javax.inject.Inject
 
-class FakePeopleRepository(
+class FakePeopleRepository @Inject constructor(
     private val peopleFakeLocalDataSource: PeopleFakeLocalDataSource
 ) : PeopleRepository {
 

@@ -5,12 +5,13 @@ import androidx.tracing.trace
 import com.aladinjunior.gestor.BuildConfig
 import com.aladinjunior.gestor.people.domain.model.Person
 import kotlinx.serialization.Serializable
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
+import javax.inject.Inject
+import javax.inject.Singleton
 
 private interface RetrofitGestorNetworkApi {
 
@@ -30,21 +31,18 @@ private data class NetworkResponse<T>(
     val data: T
 )
 
-internal class RetrofitGestorNetwork() : GestorNetworkDataSource {
+@Singleton
+internal class RetrofitGestorNetwork @Inject constructor(
+    okHttpCallFactory: dagger.Lazy<Call.Factory>,
+) : GestorNetworkDataSource {
 
 
     private val networkApi = trace("RetrofitGestorNetworkApi") {
 
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-
-        val client = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
 
         Retrofit.Builder()
             .baseUrl(GESTOR_BASE_URL)
-            .client(client)
+            .callFactory{ okHttpCallFactory.get().newCall(it) }
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(RetrofitGestorNetworkApi::class.java)

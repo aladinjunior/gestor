@@ -4,6 +4,7 @@ import com.aladinjunior.gestor.people.data.local.PeopleFakeLocalDataSource
 import com.aladinjunior.gestor.people.data.repository.FakePeopleRepository
 import com.aladinjunior.gestor.people.domain.model.Person
 import com.aladinjunior.gestor.people.presentation.PeopleViewModel
+import com.aladinjunior.gestor.rule.MainDispatcherRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -26,7 +27,6 @@ class PeopleViewModelTest {
 
     @Before
     fun setup() {
-        TestConfig.isTest = true
         viewModel = PeopleViewModel(repository)
     }
 

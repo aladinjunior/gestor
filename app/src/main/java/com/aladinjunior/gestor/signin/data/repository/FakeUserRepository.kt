@@ -1,14 +1,12 @@
 package com.aladinjunior.gestor.signin.data.repository
 
-import android.util.Log
-import com.aladinjunior.gestor.signin.data.local.FakeLocalDataSource
-import com.aladinjunior.gestor.signin.data.repository.UserRepository
-import com.aladinjunior.gestor.signin.data.repository.UserState
+import com.aladinjunior.gestor.signin.data.local.SignInFakeLocalDataSource
 import com.aladinjunior.gestor.signin.model.UserAccount
+import javax.inject.Inject
 
 
-class FakeUserRepository(
-    private val fakeLocalDataSource: FakeLocalDataSource
+class FakeUserRepository @Inject constructor (
+    private val fakeLocalDataSource: SignInFakeLocalDataSource
 ) : UserRepository {
 
 

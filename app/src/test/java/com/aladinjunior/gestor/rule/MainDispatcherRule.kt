@@ -1,4 +1,4 @@
-package com.aladinjunior.gestor
+package com.aladinjunior.gestor.rule
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

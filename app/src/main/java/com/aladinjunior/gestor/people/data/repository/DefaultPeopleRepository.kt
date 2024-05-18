@@ -4,10 +4,11 @@ import com.aladinjunior.gestor.network.GestorNetworkDataSource
 import com.aladinjunior.gestor.people.domain.model.Person
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
 private const val TAG = "TAG"
 
-class DefaultPeopleRepository(
+class DefaultPeopleRepository @Inject constructor(
     private val networkDataSource: GestorNetworkDataSource
 ) : PeopleRepository {
     override val people: List<Person>

@@ -1,7 +1,10 @@
 package com.aladinjunior.gestor.people.data.local
 
 import com.aladinjunior.gestor.people.domain.model.Person
+import javax.inject.Singleton
 
+
+@Singleton
 object PeopleFakeLocalDataSource {
 
 

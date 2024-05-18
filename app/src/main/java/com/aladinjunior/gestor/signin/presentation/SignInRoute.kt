@@ -1,8 +1,7 @@
 package com.aladinjunior.gestor.signin.presentation
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.aladinjunior.gestor.commom.User
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.aladinjunior.gestor.signin.model.UserAccount
 
 @Composable
@@ -11,7 +10,7 @@ fun SignInRoute(
     onSignInFailure: () -> Unit,
 ) {
 
-    val signInViewModel: SignInViewModel = viewModel(factory = SignInViewModel.SignInViewModelFactory())
+    val signInViewModel: SignInViewModel = hiltViewModel()
     SignInScreen(
         onSignInSubmit = { user, password ->
             signInViewModel.signIn(

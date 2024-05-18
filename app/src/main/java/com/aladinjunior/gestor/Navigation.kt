@@ -15,7 +15,7 @@ import com.aladinjunior.gestor.Destinations.SIGN_IN_ROUTE
 import com.aladinjunior.gestor.dashboard.Actions.PEOPLE
 import com.aladinjunior.gestor.dashboard.DashboardRoute
 import com.aladinjunior.gestor.people.PeopleRoute
-import com.aladinjunior.gestor.signin.data.local.FakeLocalDataSource
+import com.aladinjunior.gestor.signin.data.local.SignInFakeLocalDataSource
 import com.aladinjunior.gestor.signin.presentation.SignInRoute
 
 object Destinations {
@@ -62,7 +62,7 @@ fun GestorNavHost(
 
             ) {
             val userId = it.arguments?.getInt("userId")
-            val loggedInUser = FakeLocalDataSource.accounts[userId] ?: FakeLocalDataSource.user {
+            val loggedInUser = SignInFakeLocalDataSource.accounts[userId] ?: SignInFakeLocalDataSource.user {
                 name = "empty user"
             }
             DashboardRoute(

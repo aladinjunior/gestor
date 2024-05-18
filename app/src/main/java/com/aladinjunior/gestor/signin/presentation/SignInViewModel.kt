@@ -2,13 +2,17 @@ package com.aladinjunior.gestor.signin.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.aladinjunior.gestor.signin.data.local.SignInFakeLocalDataSource
 import com.aladinjunior.gestor.signin.data.repository.FakeUserRepository
-import com.aladinjunior.gestor.signin.data.local.FakeLocalDataSource
 import com.aladinjunior.gestor.signin.data.repository.UserRepository
 import com.aladinjunior.gestor.signin.data.repository.UserState
 import com.aladinjunior.gestor.signin.model.UserAccount
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SignInViewModel(
+
+@HiltViewModel
+class SignInViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : ViewModel() {
 
@@ -31,7 +35,7 @@ class SignInViewModel(
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(SignInViewModel::class.java)) {
-                return SignInViewModel(FakeUserRepository(FakeLocalDataSource)) as T
+                return SignInViewModel(FakeUserRepository(SignInFakeLocalDataSource)) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

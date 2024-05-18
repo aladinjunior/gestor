@@ -1,4 +1,4 @@
-package com.aladinjunior.gestor
+package com.aladinjunior.gestor.repository
 
 import com.aladinjunior.gestor.people.data.repository.PeopleRepository
 import com.aladinjunior.gestor.people.domain.model.Person

@@ -4,7 +4,7 @@ import com.aladinjunior.gestor.R
 import com.aladinjunior.gestor.commom.User
 import com.aladinjunior.gestor.signin.model.UserAccount
 
-object FakeLocalDataSource {
+object SignInFakeLocalDataSource {
 
 
     //user builder

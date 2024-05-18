@@ -3,13 +3,11 @@ package com.aladinjunior.gestor.people.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.aladinjunior.gestor.TestConfig
-import com.aladinjunior.gestor.network.RetrofitGestorNetwork
 import com.aladinjunior.gestor.people.data.local.PeopleFakeLocalDataSource
-import com.aladinjunior.gestor.people.data.repository.DefaultPeopleRepository
 import com.aladinjunior.gestor.people.data.repository.FakePeopleRepository
 import com.aladinjunior.gestor.people.data.repository.PeopleRepository
 import com.aladinjunior.gestor.people.domain.model.Person
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,9 +18,11 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
-class PeopleViewModel(
+@HiltViewModel
+class PeopleViewModel @Inject constructor(
     private val peopleRepository: PeopleRepository,
 ) : ViewModel() {
 
@@ -37,7 +37,7 @@ class PeopleViewModel(
     val people = searchText
         .debounce(1000L)
         .flatMapLatest { text ->
-            if (text.isBlank()){
+            if (text.isBlank()) {
                 flowOf(_people.value)
             } else {
                 peopleRepository.getPeopleByFirstName(text)
@@ -58,12 +58,7 @@ class PeopleViewModel(
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(PeopleViewModel::class.java)) {
-                return if (!TestConfig.isTest) {
-                    PeopleViewModel(FakePeopleRepository(PeopleFakeLocalDataSource)) as T
-
-                } else {
-                    PeopleViewModel(DefaultPeopleRepository(RetrofitGestorNetwork())) as T
-                }
+                return PeopleViewModel(FakePeopleRepository(PeopleFakeLocalDataSource)) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }

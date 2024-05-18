@@ -4,14 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.aladinjunior.gestor.people.presentation.PeopleScreen
 import com.aladinjunior.gestor.people.presentation.PeopleViewModel
 
 @Composable
 fun PeopleRoute(
 ) {
-    val viewModel: PeopleViewModel = viewModel(factory = PeopleViewModel.PeopleViewModelFactory())
+    val viewModel: PeopleViewModel = hiltViewModel()
 
     val searchText by viewModel.searchText.collectAsState()
     val people by viewModel.people.collectAsState()
