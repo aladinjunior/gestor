@@ -10,7 +10,9 @@ fun SalesRoute() {
     val viewModel: SalesViewModel = hiltViewModel()
 
 
-    SalesScreen { selectedOption ->
-
-    }
+    SalesScreen(
+        onOptionSelected = {},
+        selectedDates = {
+        }
+    )
 }
