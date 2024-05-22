@@ -1,9 +1,9 @@
 package com.aladinjunior.gestor.di
 
-import com.aladinjunior.gestor.people.data.repository.FakePeopleRepository
-import com.aladinjunior.gestor.people.data.repository.PeopleRepository
-import com.aladinjunior.gestor.signin.data.repository.FakeUserRepository
-import com.aladinjunior.gestor.signin.data.repository.UserRepository
+import com.aladinjunior.gestor.feature.people.data.repository.FakePeopleRepository
+import com.aladinjunior.gestor.feature.people.data.repository.PeopleRepository
+import com.aladinjunior.gestor.feature.signin.data.repository.FakeUserRepository
+import com.aladinjunior.gestor.feature.signin.data.repository.UserRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

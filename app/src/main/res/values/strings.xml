@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Gestor</string>
     <string name="type_your_credentials">Insira suas credenciais</string>
+    <string name="select_the_sales_period">Selecione o período das vendas</string>
 </resources>

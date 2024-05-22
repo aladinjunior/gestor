@@ -1,7 +1,7 @@
 package com.aladinjunior.gestor.repository
 
-import com.aladinjunior.gestor.people.data.repository.PeopleRepository
-import com.aladinjunior.gestor.people.domain.model.Person
+import com.aladinjunior.gestor.feature.people.data.repository.PeopleRepository
+import com.aladinjunior.gestor.feature.people.Person
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow

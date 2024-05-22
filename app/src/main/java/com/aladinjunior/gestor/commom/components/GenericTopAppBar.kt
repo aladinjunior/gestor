@@ -1,16 +1,12 @@
 package com.aladinjunior.gestor.commom.components
 
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
-import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -22,9 +18,8 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aladinjunior.gestor.ui.theme.GestorTheme
-import com.aladinjunior.gestor.util.GenericInfoText
 
-private val currentScreenTitleStartPadding = 50.dp
+private val screenComponentsPadding = 12.dp
 private val topBarTextSize = 16.sp
 
 @Composable
@@ -36,7 +31,7 @@ fun GenericTopAppBar(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth().padding(vertical = screenComponentsPadding)
     ) {
 
 

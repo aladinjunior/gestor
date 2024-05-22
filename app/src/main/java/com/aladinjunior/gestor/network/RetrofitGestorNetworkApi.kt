@@ -3,7 +3,7 @@ package com.aladinjunior.gestor.network
 
 import androidx.tracing.trace
 import com.aladinjunior.gestor.BuildConfig
-import com.aladinjunior.gestor.people.domain.model.Person
+import com.aladinjunior.gestor.feature.people.Person
 import kotlinx.serialization.Serializable
 import okhttp3.Call
 import retrofit2.Retrofit
