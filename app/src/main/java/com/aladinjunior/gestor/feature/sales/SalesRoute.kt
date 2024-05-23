@@ -9,10 +9,10 @@ import com.aladinjunior.gestor.feature.sales.presentation.SalesViewModel
 fun SalesRoute() {
     val viewModel: SalesViewModel = hiltViewModel()
 
-
     SalesScreen(
-        onOptionSelected = {},
         selectedDates = {
+
         }
     )
+
 }

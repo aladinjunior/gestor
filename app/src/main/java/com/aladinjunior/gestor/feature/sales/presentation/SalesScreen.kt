@@ -27,8 +27,7 @@ private val buttonPadding = 18.dp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SalesScreen(
-    onOptionSelected: (String) -> Unit,
-    selectedDates: (Pair<Long, Long>) -> Unit
+    selectedDates: (Pair<String, String>) -> Unit
 ) {
 
     var showBottomSheet by remember { mutableStateOf(false) }
@@ -68,9 +67,7 @@ private fun SalesScreenPreview() {
             modifier = Modifier.fillMaxSize()
         ) {
             SalesScreen(
-                onOptionSelected = {},
                 selectedDates = {}
-
             )
         }
     }
