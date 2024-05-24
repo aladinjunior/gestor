@@ -12,11 +12,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material.icons.outlined.AutoGraph
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDateRangePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,8 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.aladinjunior.gestor.commom.components.GenericButton
-import com.aladinjunior.gestor.commom.components.GenericInfoText
+import com.aladinjunior.gestor.commom.components.DropDownArrow
 import com.aladinjunior.gestor.commom.components.GenericTopAppBar
 import com.aladinjunior.gestor.feature.sales.components.PeriodSelectionContainer
 import com.aladinjunior.gestor.feature.sales.components.SaleDateRangePicker
@@ -42,45 +42,37 @@ import com.aladinjunior.gestor.ui.theme.GestorTheme
 import java.time.LocalDateTime
 
 
-private val componentsHorizontalPadding = 12.dp
-private val buttonPadding = 18.dp
-private val salesIconSize = 30.dp
-private val salesLabelTextSize = 22.sp
-
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SalesScreen(
     selectedDates: (Pair<String, String>) -> Unit,
-    sales: List<Sale>
+    sales: List<Sale>,
 ) {
 
+
     var showBottomSheet by remember { mutableStateOf(false) }
-    var selectedOption by remember {
-        mutableStateOf("")
-    }
 
-    Column(
-        modifier = Modifier.padding(horizontal = componentsHorizontalPadding)
-    ) {
+    Column {
 
-        GenericTopAppBar(onBackPressed = { /*TODO*/ }, currentScreenTitle = "Vendas")
+        SalesScreenHeader(
+            modifier = Modifier.padding(horizontal = 10.dp),
+            showBottomSheet = {
+                showBottomSheet = true
+            }
+        )
 
-        PeriodSelectionContainer(
-            onOptionSelected = { selectedOption = it })
-        GenericButton(buttonText = "Selecionar") {
-            if (selectedOption == "Selecionar periodo") showBottomSheet = true
-        }
-        Spacer(modifier = Modifier.size(18.dp))
-        SalesLabelRow(label = "Sales")
-        Spacer(modifier = Modifier.size(20.dp))
         Surface(
-
-            color = MaterialTheme.colorScheme.primaryContainer
-
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f)
         ) {
+
             LazyColumn {
                 items(sales.size) {
-                    SaleDetails()
+
+                    SaleDetails(
+                        modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp)
+                    )
                 }
             }
         }
@@ -102,22 +94,49 @@ fun SalesScreen(
 }
 
 @Composable
+fun SalesScreenHeader(
+    modifier: Modifier = Modifier,
+    showBottomSheet: () -> Unit
+
+) {
+    GenericTopAppBar(modifier = modifier, onBackPressed = { /*TODO*/ }, currentScreenTitle = "Sales")
+
+    Spacer(modifier = Modifier.size(18.dp))
+
+    PeriodSelectionContainer(
+        modifier = modifier,
+        showBottomSheet = showBottomSheet
+    )
+
+    Spacer(modifier = Modifier.size(20.dp))
+
+}
+
+@Composable
 fun SalesLabelRow(
-    label: String
+    modifier: Modifier = Modifier,
+    label: String,
+    expanded: Boolean = true,
+    onArrowClick: () -> Unit
 ) {
     Row(
-        horizontalArrangement = Arrangement.spacedBy(
-            8.dp
-        ),
-        verticalAlignment = Alignment.CenterVertically
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(6.dp)
     ) {
         Icon(
-            modifier = Modifier.size(salesIconSize),
-            imageVector = Icons.Rounded.Menu,
+            modifier = Modifier.size(26.dp),
+            imageVector = Icons.Outlined.AutoGraph,
             contentDescription = "Sales Label"
         )
-        GenericInfoText(text = label, textSize = salesLabelTextSize,
-            fontWeight = FontWeight.SemiBold)
+
+        Text(
+            text = label, fontSize = 19.sp,
+            fontWeight = FontWeight.SemiBold
+        )
+        Spacer(modifier = Modifier.weight(1f))
+        Text(text = "Period", style = MaterialTheme.typography.titleMedium)
+        DropDownArrow (onArrowClick = onArrowClick, expanded = expanded)
     }
 }
 
@@ -131,7 +150,8 @@ private fun SalesScreenPreview() {
         ) {
             SalesScreen(
                 selectedDates = {},
-                sales = saleList
+                sales = saleList,
+
             )
         }
     }
@@ -141,17 +161,19 @@ object Sales {
     private val Products = List(5) {
         Product(
             id = it.toLong(),
-            productName ="Product $it",
+            productName = "Product $it",
             amount = it * 5
         )
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
     val saleList = List(10) {
         Sale(
             id = it.toLong(),
             products = Products,
             "Seller $it",
-            LocalDateTime.now().toString()
+            LocalDateTime.now().toString(),
+            it
         )
     }
 }
