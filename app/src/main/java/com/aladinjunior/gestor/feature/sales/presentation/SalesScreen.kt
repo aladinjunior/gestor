@@ -34,7 +34,7 @@ import com.aladinjunior.gestor.commom.components.DropDownArrow
 import com.aladinjunior.gestor.commom.components.GenericTopAppBar
 import com.aladinjunior.gestor.feature.sales.components.PeriodSelectionContainer
 import com.aladinjunior.gestor.feature.sales.components.SaleDateRangePicker
-import com.aladinjunior.gestor.feature.sales.components.SaleDetails
+import com.aladinjunior.gestor.feature.sales.components.SalesListItem
 import com.aladinjunior.gestor.feature.sales.domain.model.Product
 import com.aladinjunior.gestor.feature.sales.domain.model.Sale
 import com.aladinjunior.gestor.feature.sales.presentation.Sales.saleList
@@ -48,8 +48,8 @@ import java.time.LocalDateTime
 fun SalesScreen(
     selectedDates: (Pair<String, String>) -> Unit,
     sales: List<Sale>,
+    onDetailsClicked: (saleId: Int) -> Unit
 ) {
-
 
     var showBottomSheet by remember { mutableStateOf(false) }
 
@@ -70,13 +70,13 @@ fun SalesScreen(
             LazyColumn {
                 items(sales.size) {
 
-                    SaleDetails(
-                        modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp)
+                    SalesListItem(
+                        modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 8.dp),
+                        onDetailsClicked = onDetailsClicked
                     )
                 }
             }
         }
-
 
 
         if (showBottomSheet) {
@@ -151,6 +151,7 @@ private fun SalesScreenPreview() {
             SalesScreen(
                 selectedDates = {},
                 sales = saleList,
+                {}
 
             )
         }
@@ -162,7 +163,8 @@ object Sales {
         Product(
             id = it.toLong(),
             productName = "Product $it",
-            amount = it * 5
+            amount = it * 5,
+            value = 10.2
         )
     }
 
