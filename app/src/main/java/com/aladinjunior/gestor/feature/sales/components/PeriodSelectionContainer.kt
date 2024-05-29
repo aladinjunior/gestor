@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.aladinjunior.gestor.feature.sales.components.PeriodConstants.SELECT_PERIOD
 import com.aladinjunior.gestor.feature.sales.components.PeriodConstants.periods
 import com.aladinjunior.gestor.feature.sales.presentation.SalesLabelRow
 
@@ -66,7 +67,7 @@ fun PeriodSelectionContainer(
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
-                    if (selectedOption == "Selecionar periodo") showBottomSheet()
+                    if (selectedOption == SELECT_PERIOD) showBottomSheet()
                 }) {
                 Text(text = "Confirm")
             }
@@ -78,8 +79,15 @@ fun PeriodSelectionContainer(
 
 
 object PeriodConstants {
+
+    private const val TODAY = "Today"
+    private const val SEVEN_DAYS = "7 days"
+    private const val FIFTEEN_DAYS = "15 days"
+    private const val THIRTY_DAYS = "30 days"
+    const val SELECT_PERIOD = "Select the period"
+
     val periods = listOf(
-        "Hoje", "7 dias", "15 dias", "30 dias", "Selecionar periodo"
+        TODAY, SEVEN_DAYS, FIFTEEN_DAYS, THIRTY_DAYS, SELECT_PERIOD
     )
 }
 

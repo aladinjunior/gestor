@@ -30,10 +30,10 @@ object SignInFakeLocalDataSource {
     val accounts: HashMap<Int, User> = hashMapOf(
         userAccountA.hashCode() to user {
             id = userAccountA.hashCode()
-            name = "ALADIN"
+            name = "Aladin"
             address = "Vitória de Santo Antão"
             company = "BENTO ENTERPRISE"
-            image = R.drawable.ic_launcher_background
+            image = R.drawable.frog_sample
         },
 
         userAccountB.hashCode() to user {

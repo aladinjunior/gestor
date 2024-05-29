@@ -13,10 +13,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import com.aladinjunior.gestor.commom.components.TextFieldState
 import com.aladinjunior.gestor.feature.signin.PasswordState
 import com.aladinjunior.gestor.feature.signin.UserState
 import com.aladinjunior.gestor.ui.theme.GestorTheme
-import com.aladinjunior.gestor.commom.components.TextFieldState
 
 @Composable
 fun SignInTextField(
@@ -44,9 +44,9 @@ fun SignInTextField(
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color.Transparent,
                 unfocusedContainerColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Gray,
-                focusedIndicatorColor = Color.Gray,
-                cursorColor = Color.Black
+                unfocusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                cursorColor = MaterialTheme.colorScheme.primary
             ),
             visualTransformation = if (!isPasswordField) VisualTransformation.None else PasswordVisualTransformation()
         )

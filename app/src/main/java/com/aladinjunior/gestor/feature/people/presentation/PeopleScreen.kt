@@ -33,18 +33,18 @@ fun PeopleScreen(
 
 ) {
     Column {
-        GenericTopAppBar(onBackPressed = { /*TODO*/ }, currentScreenTitle = "Pessoas")
+        GenericTopAppBar(modifier = Modifier.padding(start = screenComponentsPadding), onBackPressed = { /*TODO*/ }, currentScreenTitle = "People")
         GestorSearchBar(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(screenComponentsPadding),
-            hint = "Nome",
+            hint = "Name",
             searchText = searchText,
             onSearchTextChange = onSearchTextChange,
             )
         Spacer(modifier = Modifier.size(20.dp))
 
-        GenericInfoText(text = "Pessoas", textSize = 18.sp, modifier = Modifier.padding(start = peopleContentPadding), textColor = MaterialTheme.colorScheme.secondary)
+        GenericInfoText(text = "People", textSize = 18.sp, modifier = Modifier.padding(start = peopleContentPadding), textColor = MaterialTheme.colorScheme.secondary)
         if (people.isNotEmpty()){
             Card(modifier = Modifier.padding(horizontal = screenComponentsPadding), shape = RoundedCornerShape(topStart = screenComponentsPadding, topEnd = screenComponentsPadding)) {
                 PeopleContent(modifier = Modifier.padding(peopleContentPadding), people = people)

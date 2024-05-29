@@ -2,16 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="PeriodSelectionContainerPreview">
-        <State />
-      </entry>
-      <entry key="SaleCardPreview">
-        <State />
-      </entry>
-      <entry key="SalesScreenPreview">
-        <State />
-      </entry>
-      <entry key="app">
+      <entry key="DashboardScreenPreview">
         <State>
           <targetSelectedWithDropDown>
             <Target>
@@ -24,7 +15,45 @@
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-09T16:50:14.873894Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-05-29T11:57:41.645591Z" />
+        </State>
+      </entry>
+      <entry key="PeriodSelectionContainerPreview">
+        <State />
+      </entry>
+      <entry key="SaleCardPreview">
+        <State />
+      </entry>
+      <entry key="SalesScreenPreview">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="$USER_HOME$/.android/avd/Pixel_2_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-05-29T11:49:20.615090Z" />
+        </State>
+      </entry>
+      <entry key="app">
+        <State>
+          <runningDeviceTargetSelectedWithDropDown>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="$USER_HOME$/.android/avd/Pixel_2_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-05-29T12:10:17.793044Z" />
         </State>
       </entry>
     </value>

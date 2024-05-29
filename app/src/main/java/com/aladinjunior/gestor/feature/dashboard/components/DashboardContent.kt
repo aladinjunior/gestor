@@ -1,16 +1,13 @@
 package com.aladinjunior.gestor.feature.dashboard.components
 
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Card
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -21,8 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aladinjunior.gestor.R
-import com.aladinjunior.gestor.ui.theme.GestorTheme
 import com.aladinjunior.gestor.commom.components.GenericInfoText
+import com.aladinjunior.gestor.ui.theme.GestorTheme
 
 private val cardContentHeight = 600.dp
 private val cardContentTopSpace = 40.dp
@@ -49,12 +46,12 @@ fun DashboardContent(
 
     Box(modifier = modifier) {
 
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .size(height = cardContentHeight, width = 0.dp)
-                .padding(top = cardContentTopSpace)
-        ) {
+//        Card(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .size(height = cardContentHeight, width = 0.dp)
+//                .padding(top = cardContentTopSpace)
+//        ) {
 
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -76,14 +73,14 @@ fun DashboardContent(
 
             }
 
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            CircleUserImage(userImage = userImage)
-        }
+//        }
+//
+//        Row(
+//            modifier = Modifier.fillMaxWidth(),
+//            horizontalArrangement = Arrangement.Center
+//        ) {
+//            NoBorderCircleUserImage(imageSize = 100.dp, userImage = userImage)
+//        }
 
 
     }
@@ -97,7 +94,7 @@ private fun DashboardContentPreview() {
     GestorTheme {
         Box(modifier = Modifier.fillMaxSize()) {
 
-            DashboardContent(userImage = R.drawable.ic_launcher_foreground,
+            DashboardContent(userImage = R.drawable.ic_launcher_background,
                 userName = "LOREM", address = "Brazil", companyName = "IPSUM", actionClicked = {})
         }
     }

@@ -72,6 +72,7 @@ fun GestorNavHost(
             DashboardRoute(
                 loggedInUser = loggedInUser,
                 onActionClicked = { action ->
+                    println(action)
                     when (action) {
                         PEOPLE -> navController.navigate(PEOPLE_ROUTE)
                         SALES -> navController.navigate(SALES_ROUTE)

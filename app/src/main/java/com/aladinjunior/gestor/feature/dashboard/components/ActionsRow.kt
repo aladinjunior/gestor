@@ -8,13 +8,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.aladinjunior.gestor.feature.dashboard.Actions
@@ -37,7 +37,7 @@ fun ActionsRow(
 
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(28.dp),
     ) {
         actions.forEach { action ->
 
@@ -54,17 +54,16 @@ fun ActionsRow(
             ) {
                 Text(
                     text = action,
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.ExtraBold),
+                    color = MaterialTheme.colorScheme.onBackground
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     contentDescription = "next",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    tint = MaterialTheme.colorScheme.onBackground
                 )
             }
-            HorizontalDivider()
         }
     }
 
@@ -74,6 +73,6 @@ fun ActionsRow(
 @Composable
 private fun ActionsRowPreview() {
     GestorTheme {
-        ActionsRow(actions = actions) {}
+        ActionsRow(actions = Actions.actions) {}
     }
 }
