@@ -42,17 +42,17 @@ class PeopleViewModelTest {
         advanceUntilIdle()
 
         val expectedPeople = listOf(
-            Person(codigo = 0, "Person 1"),
-            Person(codigo = 0, "Person 10"),
-            Person(codigo = 0, "Person 11"),
-            Person(codigo = 0, "Person 12"),
-            Person(codigo = 0, "Person 13"),
-            Person(codigo = 0, "Person 14"),
-            Person(codigo = 0, "Person 15"),
-            Person(codigo = 0, "Person 16"),
-            Person(codigo = 0, "Person 17"),
-            Person(codigo = 0, "Person 18"),
-            Person(codigo = 0, "Person 19"),
+            Person(id = 0, "Person 1"),
+            Person(id = 0, "Person 10"),
+            Person(id = 0, "Person 11"),
+            Person(id = 0, "Person 12"),
+            Person(id = 0, "Person 13"),
+            Person(id = 0, "Person 14"),
+            Person(id = 0, "Person 15"),
+            Person(id = 0, "Person 16"),
+            Person(id = 0, "Person 17"),
+            Person(id = 0, "Person 18"),
+            Person(id = 0, "Person 19"),
         )
 
         assertEquals(expectedPeople, viewModel.people.value)

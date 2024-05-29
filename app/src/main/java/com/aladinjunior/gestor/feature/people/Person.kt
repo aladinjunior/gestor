@@ -4,8 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Person(
-    val codigo: Long,
-    val nome: String,
+    val id: Long,
+    val name: String,
 ) {
     class Builder(
         var id: Long = 0,
@@ -16,7 +16,7 @@ data class Person(
 
     fun doesMatchSearchQuery(query: String) : Boolean
     {
-        val matchingCombinations = listOf(nome, "${nome.first()}")
+        val matchingCombinations = listOf(name, "${name.first()}")
 
         return matchingCombinations.any {
             it.contains(query, ignoreCase = true)

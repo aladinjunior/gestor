@@ -47,7 +47,7 @@ object PeopleFakeLocalDataSource {
     )
     fun getPeopleByFirstName(firstName: String) : List<Person> {
         return fakePeople2.filter {
-            it.nome.contains(firstName, ignoreCase = true)
+            it.name.contains(firstName, ignoreCase = true)
         }
     }
 

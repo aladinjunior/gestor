@@ -40,7 +40,7 @@ fun PeopleContent(
         items(people.size) {
             Row {
                 GenericInfoText(
-                    text = people[it].nome,
+                    text = people[it].name,
                     textSize = personNameSize,
                     fontWeight = FontWeight.SemiBold
                 )

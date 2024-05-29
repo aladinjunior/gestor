@@ -18,7 +18,7 @@ class TestPeopleRepository : PeopleRepository {
 
     override suspend fun getPeopleByFirstName(firstName: String): Flow<List<Person>> {
         return peopleFlow.map { people ->
-            people.filter { it.nome.contains(firstName, ignoreCase = true) }
+            people.filter { it.name.contains(firstName, ignoreCase = true) }
         }
     }
 
